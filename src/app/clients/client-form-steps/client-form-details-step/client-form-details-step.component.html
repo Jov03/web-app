@@ -1,0 +1,179 @@
+<div class="mat-typography">
+
+  <h2>Client Details</h2>
+  
+  <form [formGroup]="clientDetailsForm">
+
+    <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="2%" fxLayoutAlign.gt-sm="start center">
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Office</mat-label>
+        <mat-select formControlName="officeId" required>
+          <mat-option *ngFor="let office of clientTemplate.officeOptions" [value]="office.id">
+            {{ office.name  }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="">
+          Office is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Staff</mat-label>
+        <mat-select formControlName="staffId" required>
+          <!-- <mat-option *ngFor="let relation of addFamilyMemberTemplate.relationshipIdOptions" [value]="relation.id">
+                {{ relation.name  }}
+              </mat-option> -->
+        </mat-select>
+        <mat-error *ngIf="">
+          Relationship is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Legal Form</mat-label>
+        <mat-select formControlName="legalFormId" required>
+          <mat-option *ngFor="let legalForm of clientTemplate.clientLegalFormOptions" [value]="legalForm.id">
+            {{ legalForm.value }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="">
+          Legal Form is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>First Name</mat-label>
+        <input formControlName="firstname" required matInput />
+        <mat-error *ngIf="">
+          First Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Middle Name</mat-label>
+        <input formControlName="middlename" matInput />
+      </mat-form-field>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Last Name</mat-label>
+        <input formControlName="lastname" required matInput />
+        <mat-error *ngIf="">
+          Last Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Mobile Number</mat-label>
+        <input formControlName="mobileNo" matInput />
+      </mat-form-field>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Date Of Birth</mat-label>
+        <input formControlName="dateOfBirth" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="dueDatePicker" required>
+        <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #dueDatePicker></mat-datepicker>
+        <mat-error *ngIf="">
+          Date of birth
+          is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="genderId" required>
+          <mat-option *ngFor="let gender of clientTemplate.genderOptions" [value]="gender.id">
+            {{ gender.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="">
+          Gender is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Client Type</mat-label>
+        <mat-select formControlName="clientTypeId">
+          <mat-option *ngFor="let clientType of clientTemplate.clientTypeOptions" [value]="clientType.id">
+            {{ clientType.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Client Classification</mat-label>
+        <mat-select formControlName="clientClassificationId">
+          <mat-option *ngFor="let clientClassification of clientTemplate.clientClassificationOptions"
+            [value]="clientClassification.id">
+            {{ clientClassification.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>External Id</mat-label>
+        <input formControlName="externalId" required matInput />
+        <mat-error *ngIf="">
+          Last Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="active" fxFlex="48%" labelPosition="before">Active
+      </mat-checkbox>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Activation Date</mat-label>
+        <input formControlName="activationDate" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="activationDatePicker" required>
+        <mat-datepicker-toggle matSuffix [for]="activationDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #activationDatePicker></mat-datepicker>
+        <mat-error *ngIf="">
+          Date of birth
+          is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="savingsProduct" fxFlex="48%" labelPosition="before">Open Savings Account
+      </mat-checkbox>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Select Saving Account</mat-label>
+        <mat-select formControlName="savingsProductId" required>
+          <mat-option *ngFor="let savingProduct of clientTemplate.savingProductOptions" [value]="savingProduct.id">
+            {{ savingProduct.name  }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="">
+          Saving Product is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-checkbox fxFlex="48%" labelPosition="before">Is Staff?
+      </mat-checkbox>
+
+      <mat-form-field fxFlex="48%">
+        <mat-label>Submitted On</mat-label>
+        <input formControlName="submittedOnDate" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="submitDatePicker" required>
+        <mat-datepicker-toggle matSuffix [for]="submitDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #submitDatePicker></mat-datepicker>
+        <mat-error *ngIf="">
+          Submit Date
+          is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+
+  </form>
+
+</div>
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="2%">
+  <button mat-raised-button matStepperPrevious>
+    <fa-icon icon="arrow-left"></fa-icon>&nbsp;&nbsp;
+    Previous
+  </button>
+  <button mat-raised-button matStepperNext>
+    Next&nbsp;&nbsp;
+    <fa-icon icon="arrow-right"></fa-icon>
+  </button>
+</div>

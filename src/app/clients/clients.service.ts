@@ -25,8 +25,8 @@ export class ClientsService {
     return this.http.get('/clients', { params: httpParams });
   }
 
-  getClientTemplate(): Observable<any> {
-    return this.http.get('/clients/template');
+  getClientTemplate(httpParams?: HttpParams): Observable<any> {
+    return this.http.get('/clients/template', { params: httpParams });
   }
 
   getClientData(clientId: string) {

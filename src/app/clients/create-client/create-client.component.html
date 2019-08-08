@@ -1,0 +1,52 @@
+<div class="container">
+
+  <mat-horizontal-stepper class="mat-elevation-z8" labelPosition="bottom" #loanProductStepper>
+
+    <ng-template matStepperIcon="number">
+      <fa-icon icon="pencil-alt" size="sm"></fa-icon>
+    </ng-template>
+
+    <ng-template matStepperIcon="edit">
+      <fa-icon icon="pencil-alt" size="sm"></fa-icon>
+    </ng-template>
+
+    <ng-template matStepperIcon="done">
+      <fa-icon icon="check" size="sm"></fa-icon>
+    </ng-template>
+
+    <ng-template matStepperIcon="error">
+      <fa-icon icon="exclamation-triangle" size="lg"></fa-icon>
+    </ng-template>
+
+    <ng-template matStepperIcon="preview">
+      <fa-icon icon="eye" size="sm"></fa-icon>
+    </ng-template>
+
+    <mat-step>
+
+      <ng-template matStepLabel>DETAILS</ng-template>
+
+      <mifosx-client-form-details-step [clientTemplate]="clientTemplate"></mifosx-client-form-details-step>
+
+    </mat-step>
+
+    <mat-step>
+
+      <ng-template matStepLabel>ADDRESS</ng-template>
+
+      <mifosx-client-form-address-step [clientAddressFormTemplate]="clientTemplate.address[0]"></mifosx-client-form-address-step>
+
+    </mat-step>
+
+    <mat-step>
+
+      <ng-template matStepLabel>FAMILY MEMBERS</ng-template>
+
+      <mifosx-client-form-family-members-step [clientFamilyMemberFormTemplate]="clientTemplate.familyMemberOptions" (submit)="submit()"></mifosx-client-form-family-members-step>
+
+    </mat-step>
+
+
+  </mat-horizontal-stepper>
+
+</div>

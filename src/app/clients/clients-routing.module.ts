@@ -19,6 +19,7 @@ import { NotesTabComponent } from './clients-view/notes-tab/notes-tab.component'
 import { DocumentsTabComponent } from './clients-view/documents-tab/documents-tab.component';
 import { DatatableTabComponent } from './clients-view/datatable-tab/datatable-tab.component';
 import { AddressTabComponent } from './clients-view/address-tab/address-tab.component';
+import { CreateClientComponent } from './create-client/create-client.component';
 
 /** Custom Resolvers */
 import { ClientViewResolver } from './common-resolvers/client-view.resolver';
@@ -46,6 +47,12 @@ const routes: Routes = [
       {
         path: '',
         component: ClientsComponent,
+      }, {
+        path: 'create',
+        component: CreateClientComponent,
+        resolve: {
+          clientTemplateData: ClientTemplateResolver
+        }
       },
       {
         path: ':clientId',

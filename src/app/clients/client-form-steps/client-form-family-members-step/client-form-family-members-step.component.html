@@ -1,0 +1,155 @@
+<div class="mat-typography">
+  <h2>Add Family Members</h2>
+  <div fxLayout="row" fxLayoutAlign="flex-end">
+    <button mat-raised-button color="primary" (click)="addFamilyMember()">
+      <fa-icon icon="plus"></fa-icon>&nbsp;&nbsp;Add
+    </button>
+  </div>
+
+  <form [formGroup]="clientFamilyMembersForm">
+
+    <div formArrayName="familyMembers"
+      *ngFor="let familyMember of clientFamilyMembersForm.get('familyMembers').controls; let i = index;">
+
+      <div [formGroupName]="i">
+
+        <mat-accordion>
+
+          <mat-expansion-panel>
+
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Family Member Name:
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-divider [inset]="false"></mat-divider>
+
+            <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="2%" fxLayoutAlign.gt-sm="start center">
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>First Name</mat-label>
+                <input formControlName="firstName" required matInput />
+                <mat-error *ngIf="">
+                  First Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Middle Name</mat-label>
+                <input formControlName="middleName" matInput />
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Last Name</mat-label>
+                <input formControlName="lastName" required matInput />
+                <mat-error *ngIf="">
+                  Last Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Qualification</mat-label>
+                <input formControlName="qualification" matInput />
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Age</mat-label>
+                <input type="number" formControlName="age" required matInput />
+                <mat-error *ngIf="">
+                  Age is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Mobile Number</mat-label>
+                <input type="number" formControlName="mobileNumber" matInput />
+
+              </mat-form-field>
+
+              <mat-checkbox formControlName="isDependent" labelPosition="before" fxFlex="48%">Is Dependent?
+              </mat-checkbox>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Relationship</mat-label>
+                <mat-select formControlName="relationshipId" required>
+                  <mat-option *ngFor="let relation of clientFamilyMemberFormTemplate.relationshipIdOptions"
+                    [value]="relation.id">
+                    {{ relation.name  }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="">
+                  Relationship is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="genderId" required>
+                  <mat-option *ngFor="let gender of clientFamilyMemberFormTemplate.genderIdOptions" [value]="gender.id">
+                    {{ gender.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="">
+                  Gender is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Profession</mat-label>
+                <mat-select formControlName="professionId">
+                  <mat-option *ngFor="let profession of clientFamilyMemberFormTemplate.professionIdOptions"
+                    [value]="profession.id">
+                    {{ profession.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Marital Status</mat-label>
+                <mat-select formControlName="maritalStatusId">
+                  <mat-option *ngFor="let maritalStatus of clientFamilyMemberFormTemplate.maritalStatusIdOptions"
+                    [value]="maritalStatus.id">
+                    {{ maritalStatus.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Date Of Birth</mat-label>
+                <input formControlName="dateOfBirth" matInput [min]="minDate" [max]="maxDate"
+                  [matDatepicker]="dateOfBirthPicker" required>
+                <mat-datepicker-toggle matSuffix [for]="dateOfBirthPicker"></mat-datepicker-toggle>
+                <mat-datepicker #dateOfBirthPicker></mat-datepicker>
+                <mat-error *ngIf="">
+                  Date of birth
+                  is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+            </div>
+
+          </mat-expansion-panel>
+
+        </mat-accordion>
+
+      </div>
+
+    </div>
+
+  </form>
+</div>
+
+<br />
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="2%">
+  <button mat-raised-button matStepperPrevious>
+    <fa-icon icon="arrow-left"></fa-icon>&nbsp;&nbsp;
+    Previous
+  </button>
+  <button mat-raised-button matStepperNext (click)="submit.emit()">
+    Next&nbsp;&nbsp;
+    <fa-icon icon="arrow-right"></fa-icon>
+  </button>
+</div>

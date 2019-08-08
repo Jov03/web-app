@@ -23,6 +23,10 @@ import { DatatableTabComponent } from './clients-view/datatable-tab/datatable-ta
 import { MultiRowComponent } from './clients-view/datatable-tab/multi-row/multi-row.component';
 import { SingleRowComponent } from './clients-view/datatable-tab/single-row/single-row.component';
 import { AddressTabComponent } from './clients-view/address-tab/address-tab.component';
+import { CreateClientComponent } from './create-client/create-client.component';
+import { ClientFormDetailsStepComponent } from './client-form-steps/client-form-details-step/client-form-details-step.component';
+import { ClientFormAddressStepComponent } from './client-form-steps/client-form-address-step/client-form-address-step.component';
+import { ClientFormFamilyMembersStepComponent } from './client-form-steps/client-form-family-members-step/client-form-family-members-step.component';
 
 
 /**
@@ -51,7 +55,11 @@ import { AddressTabComponent } from './clients-view/address-tab/address-tab.comp
     DatatableTabComponent,
     MultiRowComponent,
     SingleRowComponent,
-    AddressTabComponent
+    AddressTabComponent,
+    CreateClientComponent,
+    ClientFormDetailsStepComponent,
+    ClientFormAddressStepComponent,
+    ClientFormFamilyMembersStepComponent
   ],
   entryComponents: [
     UploadDocumentDialogComponent,

@@ -1,0 +1,152 @@
+<div class="mat-typography">
+
+  <h2>Add Address</h2>
+  <div fxLayout="row" fxLayoutAlign="flex-end">
+    <button mat-raised-button color="primary" (click)="addAddress()">
+      <fa-icon icon="plus"></fa-icon>&nbsp;&nbsp;Add
+    </button>
+  </div>
+
+  <form [formGroup]="clientAddressForm">
+
+    <div formArrayName="address" *ngFor="let address of clientAddressForm.get('address').controls; let i = index;">
+      <div [formGroupName]="i">
+
+        <mat-accordion>
+
+          <mat-expansion-panel>
+
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Address Type
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-divider [inset]="false"></mat-divider>
+
+            <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="2%" fxLayoutAlign.gt-sm="start center">
+              <mat-form-field fxFlex="48%">
+                <mat-label>Address Type</mat-label>
+                <mat-select formControlName="addressTypeId" required>
+                  <mat-option *ngFor="let addressType of clientAddressFormTemplate.addressTypeIdOptions" [value]="addressType.id">
+                    {{ addressType.name  }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="">
+                  Address Type is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Street</mat-label>
+                <input formControlName="street" required matInput />
+                <mat-error *ngIf="">
+                  First Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Address Line 1</mat-label>
+                <input formControlName="addressLine1" required matInput />
+                <mat-error *ngIf="">
+                  First Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Address Line 2</mat-label>
+                <input formControlName="addressLine2" required matInput />
+                <mat-error *ngIf="">
+                  First Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Address Line 3</mat-label>
+                <input formControlName="addressLine3" required matInput />
+                <mat-error *ngIf="">
+                  First Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Town/Village</mat-label>
+                <input formControlName="townVillage" matInput />
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>City</mat-label>
+                <input formControlName="city" matInput />
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>State/Province</mat-label>
+                <mat-select formControlName="stateProvinceId" required>
+                  <mat-option *ngFor="let stateProvince of clientAddressFormTemplate.stateProvinceIdOptions" [value]="stateProvince.id">
+                    {{ stateProvince.name  }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="">
+                  State / Province is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Country District</mat-label>
+                <mat-select formControlName="countryDistrict" required>
+                  <mat-option *ngFor="let countryDistrict of clientAddressFormTemplate.countryDistrictIdOptions" [value]="countryDistrict.id">
+                    {{ countryDistrict.name  }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="">
+                  Country District is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Country</mat-label>
+                <mat-select formControlName="countryId" required>
+                  <mat-option *ngFor="let country of clientAddressFormTemplate.countryIdOptions" [value]="country.id">
+                    {{ country.name  }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="">
+                  Country is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+
+              <mat-form-field fxFlex="48%">
+                <mat-label>Postal Code</mat-label>
+                <input formControlName="postalCode" required matInput />
+                <mat-error *ngIf="">
+                  Last Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+            </div>
+
+          </mat-expansion-panel>
+
+        </mat-accordion>
+
+      </div>
+
+    </div>
+
+  </form>
+
+</div>
+
+<br />
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="2%">
+  <button mat-raised-button matStepperPrevious>
+    <fa-icon icon="arrow-left"></fa-icon>&nbsp;&nbsp;
+    Previous
+  </button>
+  <button mat-raised-button matStepperNext>
+    Next&nbsp;&nbsp;
+    <fa-icon icon="arrow-right"></fa-icon>
+  </button>
+</div>
