@@ -46,6 +46,14 @@
 
     </mat-step>
 
+    <mat-step *ngFor="let datatable of clientTemplate.datatables">
+
+      <ng-template matStepLabel>{{datatable.registeredTableName}}</ng-template>
+
+      <mifosx-client-form-datatable-step [datatableTemplate]="datatable.columnHeaderData" (submit)="submit()"></mifosx-client-form-datatable-step>
+
+    </mat-step>
+
 
   </mat-horizontal-stepper>
 

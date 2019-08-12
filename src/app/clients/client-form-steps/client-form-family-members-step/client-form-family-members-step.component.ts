@@ -46,4 +46,8 @@ export class ClientFormFamilyMembersStepComponent implements OnInit {
     });
   }
 
+  get clientFamilyMembersStepForm() {
+    return this.clientFamilyMembersForm.value;
+  }
+
 }

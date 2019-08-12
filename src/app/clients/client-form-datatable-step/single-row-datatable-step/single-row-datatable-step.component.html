@@ -1,0 +1,18 @@
+<div [formGroup]="form" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="2%" fxLayoutAlign.gt-sm="start center">
+
+  <div *ngFor="let formfield of formfields" fxFlex="48%" fxFlex.lt-md="100%">
+    <mifosx-formfield [formfield]="formfield" [form]="form" fxFlexFill></mifosx-formfield>
+  </div>
+
+</div>
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="2%">
+  <button mat-raised-button matStepperPrevious>
+    <fa-icon icon="arrow-left"></fa-icon>&nbsp;&nbsp;
+    Previous
+  </button>
+  <button mat-raised-button matStepperNext>
+    Next&nbsp;&nbsp;
+    <fa-icon icon="arrow-right"></fa-icon>
+  </button>
+</div>

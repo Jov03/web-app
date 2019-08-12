@@ -27,6 +27,9 @@ import { CreateClientComponent } from './create-client/create-client.component';
 import { ClientFormDetailsStepComponent } from './client-form-steps/client-form-details-step/client-form-details-step.component';
 import { ClientFormAddressStepComponent } from './client-form-steps/client-form-address-step/client-form-address-step.component';
 import { ClientFormFamilyMembersStepComponent } from './client-form-steps/client-form-family-members-step/client-form-family-members-step.component';
+import { ClientFormDatatableStepComponent } from './client-form-datatable-step/client-form-datatable-step.component';
+import { SingleRowDatatableStepComponent } from './client-form-datatable-step/single-row-datatable-step/single-row-datatable-step.component';
+import { MultiRowDatatableStepComponent } from './client-form-datatable-step/multi-row-datatable-step/multi-row-datatable-step.component';
 
 
 /**
@@ -59,7 +62,10 @@ import { ClientFormFamilyMembersStepComponent } from './client-form-steps/client
     CreateClientComponent,
     ClientFormDetailsStepComponent,
     ClientFormAddressStepComponent,
-    ClientFormFamilyMembersStepComponent
+    ClientFormFamilyMembersStepComponent,
+    ClientFormDatatableStepComponent,
+    SingleRowDatatableStepComponent,
+    MultiRowDatatableStepComponent
   ],
   entryComponents: [
     UploadDocumentDialogComponent,

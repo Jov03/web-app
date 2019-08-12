@@ -42,7 +42,6 @@ export class ClientFormDetailsStepComponent implements OnInit {
 
   get clientDetailsStepForm() {
     return this.clientDetailsForm.value;
-
   }
 
 }

@@ -42,5 +42,10 @@ export class ClientFormAddressStepComponent implements OnInit {
       'address': this.formBuilder.array([this.getAddressFormGroup()])
     });
   }
+
+  get clientAddressStepForm() {
+    return this.clientAddressForm.value;
+  }
+
 }
 

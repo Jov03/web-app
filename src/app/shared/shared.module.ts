@@ -38,6 +38,7 @@ import { MaterialModule } from './material.module';
     ThemePickerComponent,
   ],
   exports: [
+    FormfieldComponent,
     FileUploadComponent,
     FooterComponent,
     LanguageSelectorComponent,
