@@ -1,6 +1,7 @@
 <div class="container">
 
-  <mat-horizontal-stepper class="mat-elevation-z8" labelPosition="bottom" #loanProductStepper>
+  <mat-horizontal-stepper class="mat-elevation-z8" labelPosition="bottom" #clientFormStepper
+    (selectionChange)="onStepChange($event)">
 
     <ng-template matStepperIcon="number">
       <fa-icon icon="pencil-alt" size="sm"></fa-icon>
@@ -34,7 +35,8 @@
 
       <ng-template matStepLabel>ADDRESS</ng-template>
 
-      <mifosx-client-form-address-step [clientAddressFormTemplate]="clientTemplate.address[0]"></mifosx-client-form-address-step>
+      <mifosx-client-form-address-step [clientAddressFormTemplate]="clientTemplate.address[0]">
+      </mifosx-client-form-address-step>
 
     </mat-step>
 
@@ -42,18 +44,29 @@
 
       <ng-template matStepLabel>FAMILY MEMBERS</ng-template>
 
-      <mifosx-client-form-family-members-step [clientFamilyMemberFormTemplate]="clientTemplate.familyMemberOptions" (submit)="submit()"></mifosx-client-form-family-members-step>
+      <mifosx-client-form-family-members-step [clientFamilyMemberFormTemplate]="clientTemplate.familyMemberOptions">
+      </mifosx-client-form-family-members-step>
 
     </mat-step>
 
     <mat-step *ngFor="let datatable of clientTemplate.datatables">
 
-      <ng-template matStepLabel>{{datatable.registeredTableName}}</ng-template>
+      <ng-template matStepLabel>{{datatable.registeredTableName | uppercase }}</ng-template>
 
-      <mifosx-client-form-datatable-step [datatableTemplate]="datatable.columnHeaderData" (submit)="submit()"></mifosx-client-form-datatable-step>
+      <mifosx-client-form-datatable-step [datatableTemplate]="datatable"></mifosx-client-form-datatable-step>
 
     </mat-step>
 
+    <mat-step>
+
+      <ng-template matStepLabel>PREVIEW</ng-template>
+
+      <mifosx-client-form-preview-step [clientDetailsStepForm]="clientDetailsStepForm"
+        [clientAddressStepForm]="clientAddressStepForm" [clientFamilyMembersStepForm]="clientFamilyMembersStepForm"
+        [clientDatatableForms]='clientDatatableForms' (submit)="submit()">
+      </mifosx-client-form-preview-step>
+
+    </mat-step>
 
   </mat-horizontal-stepper>
 

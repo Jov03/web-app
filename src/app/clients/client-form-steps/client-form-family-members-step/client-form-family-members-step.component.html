@@ -9,13 +9,13 @@
   <form [formGroup]="clientFamilyMembersForm">
 
     <div formArrayName="familyMembers"
-      *ngFor="let familyMember of clientFamilyMembersForm.get('familyMembers').controls; let i = index;">
+      *ngFor="let familyMember of clientFamilyMembersForm.get('familyMembers').controls; let i = index;last as isLast">
 
       <div [formGroupName]="i">
 
         <mat-accordion>
 
-          <mat-expansion-panel>
+          <mat-expansion-panel [expanded]="isLast">
 
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -148,7 +148,7 @@
     <fa-icon icon="arrow-left"></fa-icon>&nbsp;&nbsp;
     Previous
   </button>
-  <button mat-raised-button matStepperNext (click)="submit.emit()">
+  <button mat-raised-button matStepperNext>
     Next&nbsp;&nbsp;
     <fa-icon icon="arrow-right"></fa-icon>
   </button>

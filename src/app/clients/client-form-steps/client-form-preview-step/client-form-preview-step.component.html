@@ -1,0 +1,238 @@
+<div class="mat-typography">
+  <button (click)="showData()">Show Data</button>
+  <h2>Preview</h2>
+
+  <h3>Details</h3>
+
+  <mat-divider [inset]="false"></mat-divider>
+
+  <div fxFlexFill fxLayout="row wrap">
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Activation Date</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.activationDate}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Active</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.active}}</span>
+
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Client Classification</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.clientClassificationId}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Client Type</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.clientTypeId}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Date Of Birth</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.dateOfBirth}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">External Id</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.externalId}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">First Name</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.firstname}}</span>
+    </div>
+    
+    <div fxFlexFill>
+      <span fxFlex="40%">Last Name</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.lastname}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Middle Name</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.middlename}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Gender Id</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.genderId}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Legal Form</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.legalFormId}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Mobile No</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.mobileNo}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Office Id</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.officeId}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Savings Product</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.savingsProduct}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Savings Product</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.savingsProductId}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Staff Id</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.staffId}}</span>
+    </div>
+
+    <div fxFlexFill>
+      <span fxFlex="40%">Submitted On Date</span>
+      <span fxFlex="60%">{{clientDetailsStepForm.submittedOnDate}}</span>
+    </div>
+
+  </div>
+
+  <br />
+
+  <h3>Address</h3>
+
+  <mat-divider [inset]="false"></mat-divider>
+
+  <div fxFlexFill fxLayout="row wrap">
+
+    <cdk-virtual-scroll-viewport itemSize="50" class="family-member-viewport">
+
+      <div *cdkVirtualFor="let address of clientAddressStepForm.address;index as i">
+
+        <h4>{{i+1}}. Address Type: {{clientAddressStepForm.addressTypeId}}</h4>
+
+        <div fxFlexFill fxLayout="row wrap" style="padding-left: 5%">
+
+          <div fxFlexFill>
+            <span fxFlex="40%">Street</span>
+            <span fxFlex="55%">{{address.street}}</span>
+          </div>
+
+          <div fxFlexFill>
+            <span fxFlex="40%">AddressLine1</span>
+            <span fxFlex="55%">{{address.addressLine1}}</span>
+          </div>
+
+          <div fxFlexFill>
+            <span fxFlex="40%">AddressLine2</span>
+            <span fxFlex="55%">{{address.addressLine2}}</span>
+          </div>
+
+          <div fxFlexFill>
+            <span fxFlex="40%">AddressLine3</span>
+            <span fxFlex="55%">{{address.addressLine3}}</span>
+          </div>
+
+          <div fxFlexFill>
+            <span fxFlex="40%">Country</span>
+            <span fxFlex="55%">{{address.countryId}}</span>
+          </div>
+
+          <div fxFlexFill>
+            <span fxFlex="40%">Country District</span>
+            <span fxFlex="55%">{{address.countryDistrict}}</span>
+          </div>
+
+          <div fxFlexFill>
+            <span fxFlex="40%">TownVillage</span>
+            <span fxFlex="55%">{{address.townVillage}}</span>
+          </div>
+
+          <div fxFlexFill>
+            <span fxFlex="40%">State Province</span>
+            <span fxFlex="55%">{{address.stateProvinceId}}</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </cdk-virtual-scroll-viewport>
+
+  </div>
+
+  <br />
+
+  <h3>Family Members</h3>
+
+  <mat-divider [inset]="false"></mat-divider>
+
+  <cdk-virtual-scroll-viewport itemSize="50" class="family-member-viewport">
+
+    <div *cdkVirtualFor="let familyMember of clientFamilyMembersStepForm.familyMembers;index as i">
+
+      <h4>{{i+1}}. Name: {{familyMember.firstName}} {{familyMember.lastName}} </h4>
+
+      <div fxFlexFill fxLayout="row wrap" style="padding-left: 5%">
+
+        <div fxFlexFill>
+          <span fxFlex="40%">age</span>
+          <span fxFlex="55%">{{familyMember.age}}</span>
+        </div>
+
+        <div fxFlexFill>
+          <span fxFlex="40%">qualification</span>
+          <span fxFlex="55%">{{familyMember.qualification}}</span>
+        </div>
+
+        <div fxFlexFill>
+          <span fxFlex="40%">mobileNumber</span>
+          <span fxFlex="55%">{{familyMember.mobileNumber}}</span>
+        </div>
+
+        <div fxFlexFill>
+          <span fxFlex="40%">isDependent</span>
+          <span fxFlex="55%">{{familyMember.isDependent}}</span>
+        </div>
+
+        <div fxFlexFill>
+          <span fxFlex="40%">Relationship</span>
+          <span fxFlex="55%">{{familyMember.relationshipId}}</span>
+        </div>
+
+        <div fxFlexFill>
+          <span fxFlex="40%">Gender</span>
+          <span fxFlex="55%">{{familyMember.genderId}}</span>
+        </div>
+
+        <div fxFlexFill>
+          <span fxFlex="40%">Profession</span>
+          <span fxFlex="55%">{{familyMember.professionId}}</span>
+        </div>
+
+        <div fxFlexFill>
+          <span fxFlex="40%">MaritalStatus</span>
+          <span fxFlex="55%">{{familyMember.maritalStatusId}}</span>
+        </div>
+
+        <div fxFlexFill>
+          <span fxFlex="40%">DateOfBirth</span>
+          <span fxFlex="55%">{{familyMember.dateOfBirth}}</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </cdk-virtual-scroll-viewport>
+
+  <br />
+
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="2%">
+    <button mat-raised-button matStepperPrevious>
+      <fa-icon icon="arrow-left"></fa-icon>&nbsp;&nbsp;
+      Previous
+    </button>
+    <button color="primary" mat-raised-button (click)="submit.emit()">
+      Submit
+    </button>
+  </div>

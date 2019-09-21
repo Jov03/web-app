@@ -9,12 +9,13 @@
 
   <form [formGroup]="clientAddressForm">
 
-    <div formArrayName="address" *ngFor="let address of clientAddressForm.get('address').controls; let i = index;">
+    <div formArrayName="address"
+      *ngFor="let address of clientAddressForm.get('address').controls; let i = index;last as isLast">
       <div [formGroupName]="i">
 
         <mat-accordion>
 
-          <mat-expansion-panel>
+          <mat-expansion-panel [expanded]="isLast">
 
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -28,7 +29,8 @@
               <mat-form-field fxFlex="48%">
                 <mat-label>Address Type</mat-label>
                 <mat-select formControlName="addressTypeId" required>
-                  <mat-option *ngFor="let addressType of clientAddressFormTemplate.addressTypeIdOptions" [value]="addressType.id">
+                  <mat-option *ngFor="let addressType of clientAddressFormTemplate.addressTypeIdOptions"
+                    [value]="addressType.id">
                     {{ addressType.name  }}
                   </mat-option>
                 </mat-select>
@@ -82,7 +84,8 @@
               <mat-form-field fxFlex="48%">
                 <mat-label>State/Province</mat-label>
                 <mat-select formControlName="stateProvinceId" required>
-                  <mat-option *ngFor="let stateProvince of clientAddressFormTemplate.stateProvinceIdOptions" [value]="stateProvince.id">
+                  <mat-option *ngFor="let stateProvince of clientAddressFormTemplate.stateProvinceIdOptions"
+                    [value]="stateProvince.id">
                     {{ stateProvince.name  }}
                   </mat-option>
                 </mat-select>
@@ -94,7 +97,8 @@
               <mat-form-field fxFlex="48%">
                 <mat-label>Country District</mat-label>
                 <mat-select formControlName="countryDistrict" required>
-                  <mat-option *ngFor="let countryDistrict of clientAddressFormTemplate.countryDistrictIdOptions" [value]="countryDistrict.id">
+                  <mat-option *ngFor="let countryDistrict of clientAddressFormTemplate.countryDistrictIdOptions"
+                    [value]="countryDistrict.id">
                     {{ countryDistrict.name  }}
                   </mat-option>
                 </mat-select>

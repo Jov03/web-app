@@ -1,0 +1,10 @@
+<div class="mat-typography">
+  <h2>{{datatableName}}</h2>
+  <mifosx-single-row-datatable-step *ngIf="!multiRowDatatableFlag" [datatableName]="datatableName"
+    [datatableTemplate]="datatableFormfields" [dateTransformColumns]="dateTransformColumns"
+    [dataTableEntryObjectTemplate]="dataTableEntryObjectTemplate">
+  </mifosx-single-row-datatable-step>
+  <mifosx-multi-row-datatable-step *ngIf="multiRowDatatableFlag" [datatableName]="datatableName"
+    [datatableTemplate]="datatableFormfields" [dateTransformColumns]="dateTransformColumns"
+    [dataTableEntryObjectTemplate]="dataTableEntryObjectTemplate"></mifosx-multi-row-datatable-step>
+</div>

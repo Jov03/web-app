@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output } from '@angular/core';
 import { InputBase } from 'app/shared/form-dialog/formfield/model/input-base';
 import { SelectBase } from 'app/shared/form-dialog/formfield/model/select-base';
 import { CheckboxBase } from 'app/shared/form-dialog/formfield/model/checkbox-base';
+import { SingleRowDatatableStepComponent } from './single-row-datatable-step/single-row-datatable-step.component';
+import { MultiRowDatatableStepComponent } from './multi-row-datatable-step/multi-row-datatable-step.component';
 
 @Component({
   selector: 'mifosx-client-form-datatable-step',
@@ -10,24 +12,33 @@ import { CheckboxBase } from 'app/shared/form-dialog/formfield/model/checkbox-ba
 })
 export class ClientFormDatatableStepComponent implements OnInit {
   @Input() datatableTemplate: any;
+  @ViewChild(SingleRowDatatableStepComponent) singleRowDatatableStepComponent: SingleRowDatatableStepComponent;
+  @ViewChild(MultiRowDatatableStepComponent) multiRowDatatableStepComponent: MultiRowDatatableStepComponent;
+
   multiRowDatatableFlag: boolean;
   datatableFormfields: any;
   dateTransformColumns: string[] = [];
-  dataTableEntryObject: any;
+  dataTableEntryObjectTemplate: any = {
+    locale: 'en'
+  };
+  datatableName: string;
 
-  constructor() { }
+
+  constructor() {
+
+  }
 
   ngOnInit() {
     console.log(this.datatableTemplate);
-
-    this.multiRowDatatableFlag = this.datatableTemplate[0].columnName === 'id' ? true : false;
-    const columns = this.datatableTemplate.filter((column: any) => {
+    this.datatableName = this.datatableTemplate.registeredTableName;
+    this.multiRowDatatableFlag = this.datatableTemplate.columnHeaderData[0].columnName === 'id' ? true : false;
+    const columns = this.datatableTemplate.columnHeaderData.filter((column: any) => {
       return ((column.columnName !== 'id') && (column.columnName !== 'client_id'));
     });
-    this.datatableFormfields = this.getFormfields(columns, this.dateTransformColumns, this.dataTableEntryObject);
+    this.datatableFormfields = this.getFormfields(columns, this.dateTransformColumns, this.dataTableEntryObjectTemplate);
   }
 
-  getFormfields(columns: any, dateTransformColumns: string[], dataTableEntryObject: any) {
+  getFormfields(columns: any, dateTransformColumns: string[], dataTableEntryObjectTemplate: any) {
     return columns.map((column: any) => {
       switch (column.columnDisplayType) {
         case 'INTEGER':
@@ -56,7 +67,7 @@ export class ClientFormDatatableStepComponent implements OnInit {
         });
         case 'DATE': {
           dateTransformColumns.push(column.columnName);
-          dataTableEntryObject.dateFormat = 'yyyy-MM-dd';
+          dataTableEntryObjectTemplate.dateFormat = 'yyyy-MM-dd';
           return new InputBase({
             controlName: column.columnName,
             label: column.columnName,
@@ -67,7 +78,7 @@ export class ClientFormDatatableStepComponent implements OnInit {
         }
         case 'DATETIME': {
           dateTransformColumns.push(column.columnName);
-          dataTableEntryObject.dateFormat = 'yyyy-MM-dd HH:mm';
+          dataTableEntryObjectTemplate.dateFormat = 'yyyy-MM-dd HH:mm';
           return new InputBase({
             controlName: column.columnName,
             label: column.columnName,
@@ -78,6 +89,14 @@ export class ClientFormDatatableStepComponent implements OnInit {
         }
       }
     });
+  }
+
+  get clientDatatableForm() {
+    if (this.multiRowDatatableFlag) {
+      return this.multiRowDatatableStepComponent.datatableForm;
+    } else {
+      return this.singleRowDatatableStepComponent.datatableForm;
+    }
   }
 
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormfieldBase } from 'app/shared/form-dialog/formfield/model/formfield-base';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
-const layoutGap = 2;
 
 @Component({
   selector: 'mifosx-single-row-datatable-step',
@@ -17,9 +17,11 @@ export class SingleRowDatatableStepComponent implements OnInit {
   pristine: boolean;
 
   @Input() datatableTemplate: any;
-  constructor() {
+  @Input() datatableName: string;
+  @Input() dateTransformColumns: any[];
+  @Input() dataTableEntryObjectTemplate: any;
 
-  }
+  constructor(private datePipe: DatePipe) { }
 
   ngOnInit() {
     this.formfields = this.datatableTemplate.sort((formfieldA: FormfieldBase, formfieldB: FormfieldBase) => formfieldA.order - formfieldB.order);
@@ -32,7 +34,14 @@ export class SingleRowDatatableStepComponent implements OnInit {
     formfields.forEach(formfield => {
       group[formfield.controlName] = formfield.required ? new FormControl(formfield.value, Validators.required) : new FormControl(formfield.value);
     });
-
     return new FormGroup(group);
   }
+  get datatableForm() {
+    this.dateTransformColumns.forEach((column) => {
+      this.form.value[column] = this.datePipe.transform(this.form.value[column], this.dataTableEntryObjectTemplate.dateFormat);
+    });
+    return { registeredTableName: this.datatableName, ...this.dataTableEntryObjectTemplate, data: this.form.value };
+
+  }
+
 }

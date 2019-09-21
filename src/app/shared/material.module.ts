@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { LayoutModule } from '@angular/cdk/layout';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
   MatAutocompleteModule,
@@ -81,6 +82,7 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    ScrollingModule,
     MatTreeModule
   ],
   providers: [
